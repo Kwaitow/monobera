@@ -18,8 +18,8 @@ export interface RedeemBgtRequest {
 
 /** RedeemBgtResponse defines the message response for a RedeemBgtRequest. */
 export interface RedeemBgtResponse {
-  /** recieved_bera is the amount that will be paid to delegators for each block proposal. */
-  recievedBera: Coin[];
+  /** received_bera is the amount that will be paid to delegators for each block proposal. */
+  receivedBera: Coin[];
 }
 
 function createBaseRedeemBgtRequest(): RedeemBgtRequest {
@@ -122,7 +122,7 @@ export const RedeemBgtRequest = {
 };
 
 function createBaseRedeemBgtResponse(): RedeemBgtResponse {
-  return { recievedBera: [] };
+  return { receivedBera: [] };
 }
 
 export const RedeemBgtResponse = {
@@ -130,7 +130,7 @@ export const RedeemBgtResponse = {
     message: RedeemBgtResponse,
     writer: _m0.Writer = _m0.Writer.create(),
   ): _m0.Writer {
-    for (const v of message.recievedBera) {
+    for (const v of message.receivedBera) {
       Coin.encode(v!, writer.uint32(18).fork()).ldelim();
     }
     return writer;
@@ -149,7 +149,7 @@ export const RedeemBgtResponse = {
             break;
           }
 
-          message.recievedBera.push(Coin.decode(reader, reader.uint32()));
+          message.receivedBera.push(Coin.decode(reader, reader.uint32()));
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -162,16 +162,16 @@ export const RedeemBgtResponse = {
 
   fromJSON(object: any): RedeemBgtResponse {
     return {
-      recievedBera: Array.isArray(object?.recievedBera)
-        ? object.recievedBera.map((e: any) => Coin.fromJSON(e))
+      receivedBera: Array.isArray(object?.recievedBera)
+        ? object.receivedBera.map((e: any) => Coin.fromJSON(e))
         : [],
     };
   },
 
   toJSON(message: RedeemBgtResponse): unknown {
     const obj: any = {};
-    if (message.recievedBera?.length) {
-      obj.recievedBera = message.recievedBera.map((e) => Coin.toJSON(e));
+    if (message.receivedBera?.length) {
+      obj.receivedBera = message.receivedBera.map((e) => Coin.toJSON(e));
     }
     return obj;
   },
@@ -185,8 +185,8 @@ export const RedeemBgtResponse = {
     object: I,
   ): RedeemBgtResponse {
     const message = createBaseRedeemBgtResponse();
-    message.recievedBera =
-      object.recievedBera?.map((e) => Coin.fromPartial(e)) || [];
+    message.receivedBera =
+      object.receivedBera?.map((e) => Coin.fromPartial(e)) || [];
     return message;
   },
 };
