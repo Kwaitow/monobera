@@ -78,11 +78,11 @@ export const useSwap = ({
       setInputAddTokenDialogOpen(true);
       return;
     }
-    const doesOuputTokenExist = tokenListData?.tokenList?.some(
+    const doesOutputTokenExist = tokenListData?.tokenList?.some(
       // @ts-ignore - ignore any
       (t) => t.address.toLowerCase() === outputCurrency.toLowerCase(),
     );
-    if (!doesOuputTokenExist) {
+    if (!doesOutputTokenExist) {
       setOutputAddTokenDialogOpen(true);
       return;
     }
